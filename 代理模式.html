@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   const SuperStar = {
+      //     name: '小鲜肉',
+      //     scheduleFlag: false, // 档期标识位，false-没空（默认值），true-有空
+      //     playAdvertisement(ad) {
+      //       console.log(ad)
+      //     }
+      //   }
+
+      //   /* 经纪人 */
+      //   const ProxyAssistant = {
+      //     name: '经纪人张某',
+      //     scheduleTime(ad) {
+      //       const schedule = new Proxy(SuperStar, {
+      //         // 在这里监听 scheduleFlag 值的变化
+      //         set(obj, prop, val) {
+      //             console.log(obj,prop)
+      //           if (prop !== 'scheduleFlag') return
+      //           if (obj.scheduleFlag === false && val === true) {
+      //             // 小鲜肉现在有空了
+      //             obj.scheduleFlag = true
+      //             obj.playAdvertisement(ad) // 安排上了
+      //           }
+      //         }
+      //       })
+      //       setTimeout(() => {
+      //         console.log('小鲜鲜有空了')
+      //         schedule.scheduleFlag = true // 明星有空了
+      //       }, 2000)
+      //     },
+      //     playAdvertisement(reward, ad) {
+      //       if (reward > 1000000) {
+      //         // 如果报酬超过100w
+      //         console.log('没问题，我们小鲜鲜最喜欢拍广告了！')
+      //         ProxyAssistant.scheduleTime(ad)
+      //       } else console.log('没空，滚！')
+      //     }
+      //   }
+
+      // //   ProxyAssistant.playAdvertisement(10000, '纯蒸酸牛奶，味道纯纯，尽享纯蒸')
+      //   // 输出： 没空，滚
+
+      //   ProxyAssistant.playAdvertisement(
+      //     1000001,
+      //     '纯蒸酸牛奶，味道纯纯，尽享纯蒸'
+      //   )
+      var arr = [1, 2, 3]
+      // var initValue = 99
+      // Object.defineProperty(arr, '2', {
+      //   get: function() {
+      //     //当获取值的时候触发的函数
+      //     return initValue
+      //   },
+      //   set: function(value) {
+      //     //当设置值的时候触发的函数,设置的新值通过参数value拿到
+      //     console.log('set: ', value)
+      //     initValue = value
+      //   }
+      // })
+      // //获取值
+      // console.log(arr[2]) //hello
+
+      // //设置值
+      // arr[2] = 88
+
+      // console.log(arr[2]) //change value
+
+      // arr.push(4)
+
+      // console.log(arr[2]) //change value
+
+      // console.log( arr)
+      var obj = new Proxy(
+        arr,
+        {
+          get: function(target, propKey, receiver) {
+            console.log(`getting ${propKey}!`)
+            return Reflect.get(target, propKey, receiver)
+          },
+          set: function(target, propKey, value, receiver) {
+            console.log(`setting ${propKey}!`)
+            return Reflect.set(target, propKey, value, receiver)
+          }
+        }
+      )
+      console.log(1)
+      obj[0]=1
+    </script>
+  </body>
+</html>

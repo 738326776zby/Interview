@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function deepCopy(p, c) {
+        var c = c || {}
+        for (var i in p) {
+            console.log(p[i])
+          if (typeof p[i] === 'object') {
+              console.log(p[i].constructor)
+            c[i] = p[i].constructor === Array ? [] : {}
+            deepCopy(p[i], c[i])
+          } else {
+            c[i] = p[i]
+          }
+        }
+        return c
+      }
+      //定义数组arr1
+      var arr1 = [1, 2, 3, [1,2]]
+      //将arr1拷贝给arr2
+      var arr2 = deepCopy(arr1, [])
+    </script>
+  </body>
+</html>

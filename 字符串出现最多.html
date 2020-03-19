@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function loop_time(str) {
+        let storeMap = new Map()
+        let maxMap = new Map()
+        for (let m of str) {
+          if (storeMap.has(m)) {
+            storeMap.set(m, storeMap.get(m) + 1)
+          } else {
+            storeMap.set(m, 1)
+          }
+        }
+        for (let item of storeMap.entries()) {
+          if (!maxMap.size) {
+            maxMap.set(item[0], item[1])
+          } else {
+            maxMap = Delete_Item(item, maxMap)
+          
+          }
+        }
+        console.log(maxMap)
+      }
+
+      let str = 'aabbb2223cccddlll'
+      // 清楚maxMap 中小的元素
+      function Delete_Item(item, maxMap) {
+        if (!maxMap.size) {
+          maxMap.set(item[0], item[1])
+          return maxMap
+        }
+        for (let maxItem of maxMap.entries()) {
+          if (item[1] > maxItem[1]) {
+            maxMap.delete(maxItem[0])
+            maxMap.set(item[0], item[1])
+          }else if(item[1] == maxItem[1]){
+            maxMap.set(item[0], item[1])
+          }
+        }
+        return maxMap
+      }
+      loop_time(str)
+    </script>
+  </body>
+</html>

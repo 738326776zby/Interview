@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   Array.prototype.forEach = function(callback) {
+      //     var len = this.length
+      //     for (var i = 0; i < len; i++) {
+      //       callback(this[i], i)
+      //     }
+      //   }
+
+      //   arr.forEach((item, index) => {
+      //     console.log(item, index)
+      //   })
+      Array.prototype.fakeMap = function(fn) {
+         let arr=[]
+     
+         for(let i =0;i<this.length;i++){
+            arr.push(fn(this[i],i)) 
+         } 
+       
+         return arr
+      }
+      let arr = [1, 2, 3, 4]
+      let arrFlag = arr.fakeMap((item,index)=>item+1)
+      console.log(arr)
+      console.log(arrFlag)
+    </script>
+  </body>
+</html>

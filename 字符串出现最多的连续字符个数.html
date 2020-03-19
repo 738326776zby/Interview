@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let string = 'abcabcabcabc,abd'
+      function Look(str) {
+        let mapStore = new Map()
+        let maxStore = new Map()
+        for (let i = 0; i < string.length; i++) {
+          for (let j = string.length; j > i; j--) {
+            let key = str.substring(i, j)
+            let reg = new RegExp(key, 'g')
+
+            if (!mapStore.has(key)) {
+              let use_time = string.match(reg).length
+
+              mapStore.set(key, use_time)
+            }
+          }
+        }
+        for (let item of mapStore.entries()) {
+          if (!maxStore.size) {
+            maxStore.set(item[0], item[1])
+          } else {
+            maxStore = ChangeMaxStore(item,maxStore)
+          }
+        }
+        console.log(maxStore)
+      }
+      function ChangeMaxStore(item,maxStore){
+        if(!maxStore.size){
+            maxStore.set(item[0], item[1])
+            return maxStore
+        }
+       
+        for (let z of maxStore.values()) {
+            if(item[1]>z){
+                maxStore.clear(maxStore)
+                maxStore.set(item[0], item[1])
+                break
+            }else if(item[1]==z){
+                maxStore.set(item[0], item[1])
+            }
+        }
+        return maxStore
+      }
+      Look(string)
+    </script>
+  </body>
+</html>

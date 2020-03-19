@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // let arr1 = [1,2]
+      // let arr2 = [2,5]
+      // Array.prototype.fakeConcat = function(arr){
+      //     for(let i in arr){
+      //         this.push(arr[i])
+      //     }
+      //     return arr1
+      // }
+      // console.log(arr1.concat(arr2))
+      let arr = [1, 2, 456, 7]
+      Array.prototype.fakerEvery = function(cb) {
+          const arr = this
+          const index = 0
+          for(let i in arr){
+            index = i
+            if(arr[i]<=3){
+                break
+            }
+          }
+          
+      }
+      arr.fakerEvery(item => item > 3)
+    </script>
+  </body>
+</html>

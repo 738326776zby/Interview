@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="grid-example"></div>
+    <script src="https://cdn.bootcss.com/extjs/6.2.0/ext-all.js"></script>
+    <script>
+      Ext.require(['Ext.grid.*', 'Ext.data.*', 'Ext.util.*', 'Ext.state.*'])
+
+      Ext.onReady(function() {
+        // mock up data
+        // sample static data for the store
+        var myData = [
+          ['gloomyfish', 31, 'M', 'software', '09 July 1980'],
+          ['Mike', 31, 'M', 'software', '09 July 1984'],
+          ['Green Mook', 31, 'M', 'software', '09 July 1980'],
+          ['Rose Kate', 25, 'F', 'software', '09 July 1987'],
+          ['Dave Wu', 28, 'M', 'software', '24 July 1984'],
+          ['Hong Naa', 31, 'M', 'software', '09 July 1980']
+        ]
+
+        // create data model
+        Ext.define('EmplyeeInfo', {
+          extend: 'Ext.data.Model',
+          fields: [
+            { name: 'employee', type: 'string' },
+            { name: 'age', type: 'int' },
+            { name: 'gentle', type: 'string' },
+            { name: 'department', type: 'string' },
+            { name: 'birthday', type: 'date', dateFormat: 'd F Y' }
+          ]
+        })
+
+        // create the data store
+        var store = Ext.create('Ext.data.ArrayStore', {
+          model: 'EmplyeeInfo',
+          data: myData
+        })
+
+        // create the Grid
+        var grid = Ext.create('Ext.grid.Panel', {
+          store: store,
+          plugins: [
+            Ext.create('Ext.grid.plugin.CellEditing', {
+              clicksToEdit: 1 //设置单击单元格编辑
+            })
+          ],
+          columns: [
+            {
+              text: 'Employee Name',
+              flex: 1,
+              sortable: false,
+              dataIndex: 'employee',
+              editor: {
+                xtype: 'textfield',
+                enableKeyEvents: false
+              }
+            },
+            {
+              text: 'Age',
+              width: 75,
+              sortable: true,
+              dataIndex: 'age'
+            },
+            {
+              text: 'Gentle',
+              width: 75,
+              sortable: true,
+              dataIndex: 'gentle'
+            },
+            {
+              text: 'Department',
+              width: 75,
+              sortable: true,
+              dataIndex: 'department'
+            },
+            {
+              text: 'Birthday Date',
+              width: 85,
+              sortable: true,
+              renderer: Ext.util.Format.dateRenderer('m/d/Y'),
+              dataIndex: 'birthday'
+            }
+          ],
+          height: 350,
+          width: 600,
+          title: 'Employee Information Table',
+          renderTo: 'grid-example',
+          viewConfig: {
+            stripeRows: true
+          }
+        })
+        grid.addListener('cellclick', function(table, td, cellIndex, record) {
+         
+            return true
+        })
+      })
+    </script>
+  </body>
+</html>

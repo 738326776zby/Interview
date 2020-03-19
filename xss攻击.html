@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./sanitize-html.min.js"></script>
+    <script>
+        var html = "<strong>alert(1)</strong>";
+        console.log(sanitizeHtml("<b>111</b><a>adasd </a>"),{
+            allowedTags: [ 'b' ],
+        });
+        console.log(sanitizeHtml("<img src=x onerror=alert('img') />"));
+        console.log(sanitizeHtml("console.log('hello world')"));
+    </script>
+</body>
+</html>

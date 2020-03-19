@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #one{
+            width:700px;
+            height: 700px;
+            border:1px solid red;
+            margin-top:20px;
+            position: relative;
+        }
+        #two{
+            width:200px;
+            position: absolute;
+            top:40px;
+            height: 200px;
+            border:1px solid blue;
+       
+            /* margin-top:40px; */
+            padding:10px;
+        }
+        #three{
+            width:200px;
+            height: 200px;
+            border:1px solid blueviolet;
+            float:right;
+            background-color: cyan;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+<form action="form_action.asp" method="get" id="bb" class="bb">
+        <p>First name: <input type="text" name="fname" /></p>
+        <p>Last name: <input type="text" name="lname" disabled="disabled" /></p>
+        <input type="submit" value="Submit" id="submit1"/>
+        </form>
+    <div id="one">
+        <div id="two"></div>
+        <div id="three">张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的张博亚硕大的</div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/2.1.2/jquery.js"></script>
+    <script>
+        window.onload=function(){
+            var one = document.getElementById('one')
+            var two = document.getElementById('two')
+            var three = document.getElementById('three')
+            // console.log(one.offsetTop)
+            // console.log(two.offsetTop)
+            console.log(three.offsetTop)
+            // console.log(three.clientHeight) // padding+border+width
+            console.log(three.scrollHeight) // padding+border+width
+         
+        }
+        $('#submit1').bind('click',function(){
+            console.log(2) 
+            document.getElementById('submit1').disabled='dis'
+            console.log(1) 
+            $('.bb').submit()
+        })
+       
+    </script>
+</body>
+</html>

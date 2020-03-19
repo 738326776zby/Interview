@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>重写new 方法</title>
+  </head>
+  <body>
+    <script>
+      let news2 = function(fn) {
+        let obj = Object.create(fn.prototype)
+        let k = fn.call(obj)
+        if (typeof k === 'object') {
+          return k
+        } else {
+          return obj
+        }
+      }
+      function a(name) {
+        this.name = name
+      }
+      console.log(news2(a))
+    </script>
+  </body>
+</html>

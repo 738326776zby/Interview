@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let arr = [1, 2, 3, 4]
+
+      const fakerReducerHelper = (fn, init, arr) => {
+        if (!arr.length) {
+          return init
+        }
+        let [head,...other] = arr 
+        return  fakerReducerHelper(fn, fn(init,head), other)
+      }
+      Array.prototype.fakeReducer = function(...rest) {
+        const [fn,num] = rest 
+        return fakerReducerHelper(fn, num, this)
+      }
+      console.log(arr.fakeReducer((a, b) => a + b, 0))
+    </script>
+  </body>
+</html>

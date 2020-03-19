@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <script>
+      //   function debounce(cb, delay) {
+      //     var t = null
+      //     return function(e) {
+      //       clearTimeout(t)
+      //       t = setTimeout(() => {
+      //         cb.call(e)
+      //       }, delay)
+      //     }
+      //   }
+      //   window.onscroll = debounce(function() {
+      //     console.log('调用1次')
+      //   }, 500)
+      function throttle(cb, duration = 200) {
+        var lastting = 0
+        return function() {
+          var now = new Date().getTime()
+          if (now - lastting > duration) {
+            lastting = now
+            cb()
+          }
+        }
+      }
+      window.onscroll = throttle(function() {
+        console.log('调用1次')
+      })
+    </script>
+  </body>
+</html>

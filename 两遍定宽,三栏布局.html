@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <!-- 浮动布局 -->
+    <style>
+      .layout-float .right {
+        float: right;
+        width: 300px;
+        height: 100px;
+        background-color: red;
+      }
+      .layout-float .left {
+        float: left;
+        width: 300px;
+        height: 100px;
+        background-color: blue;
+      }
+      .layout-float .center {
+        height: 100px;
+        background-color: yellow;
+      }                  
+    </style>
+    <!-- 绝对定位 -->
+    <style>
+      .layout-absolute .right {
+        width: 300px;
+        height: 100px;
+        right: 0px;
+        position: absolute;
+        background-color: red;
+      }
+      .layout-absolute .left {
+        width: 300px;
+        height: 100px;
+        left: 0px;
+        position: absolute;
+        background-color: blue;
+      }
+      .layout-absolute .center {
+        left: 300px;
+        right: 300px;
+        height: 100px;
+        position: absolute;
+        background-color: yellow;
+      }
+    </style>
+    <!-- 伸缩布局 -->
+    <style>
+      .layout-flex .left-center-right {
+        display: flex;
+      }
+      .layout-flex .left-center-right .left {
+        width: 300px;
+        height: 100px;
+        background-color: blue;
+      }
+      .layout-flex .left-center-right .center {
+        flex: auto;
+        background-color: yellow;
+      }
+      .layout-flex .left-center-right .right {
+        width: 300px;
+        height: 100px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body class="layout-flex">
+    <div class="left-center-right">
+      <div class="left"></div>
+      <div class="center"><h1>Flex伸缩布局解决方案</h1></div>
+      <div class="right"></div>
+    </div>
+  </body>
+</html>

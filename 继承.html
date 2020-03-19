@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 构造函数继承
+
+      //   function Parent1(){
+      //         this.name = '爸爸'
+      //         this.play = [1,2]
+      //     }
+      //     Parent1.prototype.say =function(){
+      //         console.log(1)
+      //     }
+      //     function Child1(){
+      //         Parent1.call(this)
+      //         this.type ="孩子"
+      //     }
+      //     var s1 = new Child1()
+      //     var s2 = new Child1()
+      //      s1.play.push(4) // s1 和 s2 都被改变了
+      //     console.log(s1,s2)
+      // 原型链继承
+      //   function Parent1() {
+      //     this.name = '爸爸'
+      //     this.play = [1, 2, 3]
+      //   }
+      //   Parent1.prototype.say = function() {
+      //     console.log(1)
+      //   }
+      //   function Child1(name) {
+      //     this.type = name
+      //   }
+      //   Child1.prototype = new Parent1()
+      //   console.log(Child1.prototype)
+      //   var s1 = new Child1('张博亚')
+      //   var s2 = new Child1('天秀鞥')
+      //   console.log(s1, s2)
+
+      // 组合继承
+      //   function Parent1() {
+      //     this.name = '爸爸'
+      //     this.play = [1, 2, 3]
+      //   }
+      //   Parent1.prototype.say = function() {
+      //     console.log(1)
+      //   }
+      //   function Child1() {
+      //     Parent1.call(this)
+      //     this.type = '孩子'
+      //   }
+      //   Child1.prototype = new Parent1()
+      //   var s1 = new Child1('张博亚')
+      //   var s2 = new Child1('天秀鞥')
+      //   s1.play.push(3)
+      //   console.log(s1, s2)
+      // 组合继承优化2
+      function Parent1() {
+        this.name = '爸爸'
+        this.play = [1, 2, 3]
+      }
+      Parent1.prototype.say = function() {
+        console.log(1)
+      }
+      function Child1() {
+        Parent1.call(this)
+        this.type = '孩子'
+      }
+      Child1.prototype = Parent1.prototype
+      var s1 = new Child1('张博亚')
+      var s2 = new Child1('天秀鞥')
+
+      console.log(s1, s2)
+      console.log(s2.constructor) // constructor 被覆盖了
+
+      // 组合继承优化2
+      function Parent1() {
+        this.name = '爸爸'
+        this.play = [1, 2, 3]
+      }
+      Parent1.prototype.say = function() {
+        console.log(1)
+      }
+      function Child1() {
+        Parent1.call(this)
+        this.type = '孩子'
+      }
+      Child1.prototype = Object.create(Parent1.prototype)
+      var s1 = new Child1('张博亚')
+      var s2 = new Child1('天秀鞥')
+
+      console.log(s1, s2)
+      console.log(s2.constructor) // constructor 是不同的了
+    </script>
+  </body>
+</html>
